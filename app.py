@@ -4,8 +4,8 @@ import joblib
 
 st.title("Employee Attrition Prediction App")
 
-pipeline = joblib.load("model/attrition_pipeline.pkl")
-columns = joblib.load("model/columns.pkl")  # Load saved column names
+pipeline = joblib.load("employee_attrition.pkl")
+columns = joblib.load("columns.pkl")  # Load saved column names
 
 # User Inputs
 age = st.number_input("Age", 18, 60, 30)
@@ -27,3 +27,4 @@ input_df.loc[0, "JobRole"] = job_role
 if st.button("Predict"):
     pred = pipeline.predict(input_df)[0]
     st.write("Attrition:", "Yes" if pred == 1 else "No")
+
